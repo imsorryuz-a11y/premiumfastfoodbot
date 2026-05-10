@@ -1,7 +1,8 @@
 import axios from 'axios';
 import type { Product } from '../store/useStore';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
+const API_URL = import.meta.env.VITE_API_URL || 'https://premiumfastfoodbot.onrender.com/api
+';
 
 export const fetchProducts = async (): Promise<Product[]> => {
   try {
