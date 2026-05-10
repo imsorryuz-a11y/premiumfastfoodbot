@@ -11,9 +11,6 @@ logging.basicConfig(level=logging.INFO)
 bot = Bot(token=settings.BOT_TOKEN)
 dp = Dispatcher()
 
-# Include Routers
-dp.include_router(chat_router)
-
 @dp.message(Command("start"))
 async def cmd_start(message: types.Message):
     builder = InlineKeyboardBuilder()
@@ -29,6 +26,9 @@ async def cmd_start(message: types.Message):
         reply_markup=builder.as_markup(),
         parse_mode="Markdown"
     )
+
+# Include Routers (Start komandasidan keyin ishlaydi)
+dp.include_router(chat_router)
 
 async def main():
     await bot.delete_webhook(drop_pending_updates=True)
