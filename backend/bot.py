@@ -13,10 +13,11 @@ dp = Dispatcher()
 
 @dp.message(Command("start"))
 async def cmd_start(message: types.Message):
+    webapp_url = settings.WEBAPP_URL.strip()
     builder = InlineKeyboardBuilder()
     builder.row(types.InlineKeyboardButton(
         text="🍔 Menyuni ochish",
-        web_app=types.WebAppInfo(url=settings.WEBAPP_URL)
+        web_app=types.WebAppInfo(url=webapp_url)
     ))
     
     await message.answer(
@@ -27,7 +28,7 @@ async def cmd_start(message: types.Message):
         parse_mode="Markdown"
     )
 
-# Include Routers (Start komandasidan keyin ishlaydi)
+# Include Routers
 dp.include_router(chat_router)
 
 async def main():
